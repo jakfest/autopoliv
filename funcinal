@@ -55,8 +55,8 @@ void newMsg(FB_msg& msg) {
   }
   if (msg.data == "Water") {
     if (gor_1 == true && gor_2 == true) {
-      String menu10 = F("Water first plant \t Water second plant \t Water first and second plant \n Back");
-      bot.inlineMenu("Главная", menu10);
+      String menu1 = F("Water first plant \t Water second plant \t Water first and second plant \n Back");
+      bot.inlineMenu("Главная", menu1);
       depth = 1;
     }
     else if (gor_1 == true) {
@@ -70,7 +70,7 @@ void newMsg(FB_msg& msg) {
       bot.sendMessage("За работу", CHAT_ID);
       con1 = true;
     }
-    else {
+    else if (gor_2 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.inlineMenu("Главная", menu1);
       depth = 0;
@@ -80,6 +80,11 @@ void newMsg(FB_msg& msg) {
       digitalWrite(GOR2, 1);
       bot.sendMessage("За работу", CHAT_ID);
       con2 = true;
+    }
+    else{
+       bot.sendMessage("Подключите горшок", CHAT_ID);
+       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+       bot.inlineMenu("Главная", menu1);
     }
   }
   if (msg.data == "Water first plant") {
@@ -122,8 +127,8 @@ void newMsg(FB_msg& msg) {
     dat = true;
   }
   if (msg.data == "Get time") {
-    String menu3 = F("10 second \t 2 minutes \t 8 hour \t 16 hour  \n Back");
-    bot.editMenu(menuID, menu3);
+    String menu1 = F("10 second \t 2 minutes \t 8 hour \t 16 hour  \n Back");
+    bot.editMenu(menuID, menu1);
     depth = 1;
   }
   if (msg.data == "10 second") {
@@ -151,29 +156,29 @@ void newMsg(FB_msg& msg) {
     depth = 0;
   }
   if (msg.data == "Settings") {
-    String menu2 = F("Get or delete plant \t Power Modes \t Add Device \t Service Mode \t Offline Mode  \n Back");
-    bot.editMenu(menuID, menu2);
+    String menu1 = F("Get or delete plant \t Power Modes \t Add Device \t Service Mode \t Offline Mode  \n Back");
+    bot.editMenu(menuID, menu1);
     depth = 1;
   }
   if (msg.data == "Get or delete plant") {
     if (gor_1 == false && gor_2 == false) {
-      String menu4 = F("Get first plant \t Get second plant \t Get first and second plant \n Back");
-      bot.editMenu(menuID, menu4);
+      String menu1 = F("Get first plant \t Get second plant \t Get first and second plant \n Back");
+      bot.editMenu(menuID, menu1);
       depth = 1;
     }
     else if (gor_1 == true && gor_2 == true) {
-      String menu5 = F("Delete first plant \t Delete second plant \t Delete first and second plant \n Back");
-      bot.editMenu(menuID, menu5);
+      String menu1 = F("Delete first plant \t Delete second plant \t Delete first and second plant \n Back");
+      bot.editMenu(menuID, menu1);
       depth = 1;
     }
     else if (gor_1 == true && gor_2 == false) {
-      String menu6 = F("Delete first plant \t Get second plant \n Back");
-      bot.editMenu(menuID, menu6);
+      String menu1 = F("Delete first plant \t Get second plant \n Back");
+      bot.editMenu(menuID, menu1);
       depth = 1;
     }
     else {
-      String menu7 = F("Get first plant \t Delete second plant \n Back");
-      bot.editMenu(menuID, menu7);
+      String menu1 = F("Get first plant \t Delete second plant \n Back");
+      bot.editMenu(menuID, menu1);
       depth = 1;
     }
   }

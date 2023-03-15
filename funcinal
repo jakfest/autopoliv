@@ -48,6 +48,7 @@ void newMsg(FB_msg& msg) {
     bot.inlineMenu("Главное", menu1);
     depth = 0;
     menuID = bot.lastBotMsg();
+    bot.sendMessage("За работу", CHAT_ID); bot.sendMessage("За работу", CHAT_ID);
   }
   if (msg.data == "Water") {
     if (gor_1 == true && gor_2 == true) {

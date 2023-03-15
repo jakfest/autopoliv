@@ -18,16 +18,17 @@ FastBot bot(BOT_TOKEN);
 
 
 unsigned long currentMillis = 0;
-unsigned long polive = 0;
-unsigned long otchet = 0;
+unsigned long polive1 = 0, polive2 = 0;
+unsigned long otchet1 = 0, otchet2 = 0;
 unsigned long tmr = 1000000000000000, rab = 0, rabk = 1000000000;
 boolean con = false;
 int menuID = 0;
 byte depth = 0;
 boolean dat = true;
-boolean gor_1 = false; 
-boolean gor_2 = false; 
-
+boolean gor_1 = false;
+boolean gor_2 = false;
+con1 = false
+       con2 = false
 
 void setup() {
 
@@ -50,16 +51,71 @@ void newMsg(FB_msg& msg) {
     bot.inlineMenu("Главная", menu1);
     depth = 0;
     menuID = bot.lastBotMsg();
-
   }
   if (msg.data == "Water") {
+    if (gor_1 == true && gor_2 == true) {
+      String menu10 = F("Water first plant \t Water second plant \t Water first and second plant \n Back");
+      bot.inlineMenu("Главная", menu10);
+      depth = 1;
+    }
+    else if (gor_1 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.inlineMenu("Главная", menu1);
+      depth = 0;
+      currentMillis = millis();
+      rabk = 10000;
+      polive1 = currentMillis;
+      digitalWrite(GOR1, 1);
+      bot.sendMessage("За работу", CHAT_ID);
+      con1 = true;
+    }
+    else {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.inlineMenu("Главная", menu1);
+      depth = 0;
+      currentMillis = millis();
+      rabk = 10000;
+      polive2 = currentMillis;
+      digitalWrite(GOR2, 1);
+      bot.sendMessage("За работу", CHAT_ID);
+      con2 = true;
+    }
+  }
+  if (msg.data == "Water first plant") {
+    String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+    bot.inlineMenu("Главная", menu1);
+    depth = 0;
     currentMillis = millis();
     rabk = 10000;
-    polive = currentMillis;
+    polive1 = currentMillis;
     digitalWrite(GOR1, 1);
+    bot.sendMessage("За работу", CHAT_ID);
+    con1 = true;
+  }
+  if (msg.data == "Water second plant"){
+    String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+    bot.inlineMenu("Главная", menu1);
+    depth = 0;
+    currentMillis = millis();
+    rabk = 10000;
+    polive2 = currentMillis;
     digitalWrite(GOR2, 1);
     bot.sendMessage("За работу", CHAT_ID);
-    con = true;
+    con2 = true;
+  }
+  if (msg.data == "Water first and second plant"){
+    String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+    bot.inlineMenu("Главная", menu1);
+    depth = 0;
+    currentMillis = millis();
+    rabk = 10000;
+    polive1 = currentMillis;
+    digitalWrite(GOR1, 1);
+    con1 = true;
+    polive2 = currentMillis;
+    digitalWrite(GOR2, 1);
+    bot.sendMessage("За работу", CHAT_ID);
+    con2 = true;
   }
   if (msg.data == "Water for datchic") {
     dat = true;
@@ -98,60 +154,60 @@ void newMsg(FB_msg& msg) {
     bot.editMenu(menuID, menu2);
     depth = 1;
   }
-  if (msg.data == "Get or delete plant"){
-    if (gor_1 == false && gor_2 == false){
+  if (msg.data == "Get or delete plant") {
+    if (gor_1 == false && gor_2 == false) {
       String menu4 = F("Get first plant \t Get second plant \t Get first and second plant \n Back");
       bot.editMenu(menuID, menu4);
       depth = 1;
     }
-    else if (gor_1 == true && gor_2 == true){
+    else if (gor_1 == true && gor_2 == true) {
       String menu5 = F("Delete first plant \t Delete second plant \t Delete first and second plant \n Back");
       bot.editMenu(menuID, menu5);
       depth = 1;
     }
-    else if (gor_1 == true && gor_2 == false){
+    else if (gor_1 == true && gor_2 == false) {
       String menu6 = F("Delete first plant \t Get second plant \n Back");
       bot.editMenu(menuID, menu6);
       depth = 1;
     }
-    else{
+    else {
       String menu7 = F("Get first plant \t Delete second plant \n Back");
       bot.editMenu(menuID, menu7);
       depth = 1;
     }
   }
-  if (msg.data == "Get first plant"){
+  if (msg.data == "Get first plant") {
     gor_1 = true;
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
-  if (msg.data == "Get second plant"){
+  if (msg.data == "Get second plant") {
     gor_2 = true;
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
-  if (msg.data == "Delete first plant"){
+  if (msg.data == "Delete first plant") {
     gor_1 = false;
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
-  if (msg.data == "Delete second plant"){
+  if (msg.data == "Delete second plant") {
     gor_2 = false;
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
-  if (msg.data == "Delete first and second plant"){
+  if (msg.data == "Delete first and second plant") {
     gor_1 = false;
     gor_2 = false;
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
-  if (msg.data == "Get first and second plant"){
+  if (msg.data == "Get first and second plant") {
     gor_2 = true;
     gor_1 = true;
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
@@ -169,21 +225,24 @@ void loop() {
   Blynk.run();
   bot.tick();
   currentMillis = millis();
-
-  if (currentMillis - otchet >= tmr && con == false) {
-
+  if (currentMillis - otchet1 >= tmr && con1 == false) {
     rabk = 15000;
-    con = true;
-    polive = currentMillis;
+    polive1 = currentMillis;
     digitalWrite(GOR1, 1);
   }
-  if (currentMillis - polive >= rabk && con == true) {
-
+  if (currentMillis - otchet2 >= tmr && con2 == false) {
+    rabk = 15000;
+    polive2 = currentMillis;
+    digitalWrite(GOR2, 1);
+  }
+  if (currentMillis - polive1 >= rabk && con1 == true) {
     otchet = currentMillis;
     digitalWrite(GOR1, 0);
-    con = false;
   }
-
+  if (currentMillis - polive2 >= rabk && con2 == true) {
+    otchet = currentMillis;
+    digitalWrite(GOR2, 0);
+  }
 }
 void start() {
   delay(2000);

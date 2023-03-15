@@ -27,13 +27,14 @@ byte depth = 0;
 boolean dat = true;
 boolean gor_1 = false;
 boolean gor_2 = false;
-con1 = false
-       con2 = false
+boolean con1 = false;
+boolean con2 = false;
+
+
 
 void setup() {
 
   start();
-  Blynk.begin(auth, ssid, pass);
   Serial.begin(115200);
   pinMode(GOR1, OUTPUT);
   pinMode(GOR2, OUTPUT);
@@ -222,7 +223,6 @@ void newMsg(FB_msg& msg) {
 }
 
 void loop() {
-  Blynk.run();
   bot.tick();
   currentMillis = millis();
   if (currentMillis - otchet1 >= tmr && con1 == false) {
@@ -236,11 +236,11 @@ void loop() {
     digitalWrite(GOR2, 1);
   }
   if (currentMillis - polive1 >= rabk && con1 == true) {
-    otchet = currentMillis;
+    otchet1 = currentMillis;
     digitalWrite(GOR1, 0);
   }
   if (currentMillis - polive2 >= rabk && con2 == true) {
-    otchet = currentMillis;
+    otchet2 = currentMillis;
     digitalWrite(GOR2, 0);
   }
 }

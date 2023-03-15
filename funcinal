@@ -4,7 +4,7 @@
 #define GOR2 1
 #define BOT_TOKEN "5710052332:AAFSjCW2vZW-nWMcd0GljNuNl3EHzd49_lc"
 #define DATPOL 4
-#define CHAT_ID "941712200", "5359426542"
+#define CHAT_ID "941712200, 5359426542"
 char auth[] = "gk-47W3AoXa0ej2-HVK9vKgHty3BPqdW";
 char ssid[] = "TP--Link";
 char pass[] = "89508240145";

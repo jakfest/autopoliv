@@ -45,7 +45,7 @@ void setup() {
 void newMsg(FB_msg& msg) {
   if (msg.text == "/start") {
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-    bot.inlineMenu(menuID, menu1);
+    bot.inlineMenu("Главное", menu1);
     depth = 0;
     menuID = bot.lastBotMsg();
   }

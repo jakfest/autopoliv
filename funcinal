@@ -40,28 +40,24 @@ void setup() {
   pinMode(GOR2, OUTPUT);
   bot.setChatID(CHAT_ID);
   bot.attach(newMsg);
-  String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-  bot.inlineMenu("Главная", menu1);
-
-  menuID = bot.lastBotMsg();
 }
 
 void newMsg(FB_msg& msg) {
   if (msg.text == "/start") {
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-    bot.inlineMenu("Главная", menu1);
+    bot.inlineMenu(menuID, menu1);
     depth = 0;
     menuID = bot.lastBotMsg();
   }
   if (msg.data == "Water") {
     if (gor_1 == true && gor_2 == true) {
       String menu1 = F("Water first plant \t Water second plant \t Water first and second plant \n Back");
-      bot.inlineMenu("Главная", menu1);
+      bot.editMenu(menuID, menu1);
       depth = 1;
     }
     else if (gor_1 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-      bot.inlineMenu("Главная", menu1);
+      bot.editMenu(menuID, menu1);
       depth = 0;
       currentMillis = millis();
       rabk = 10000;
@@ -72,7 +68,7 @@ void newMsg(FB_msg& msg) {
     }
     else if (gor_2 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-      bot.inlineMenu("Главная", menu1);
+      bot.editMenu(menuID, menu1);
       depth = 0;
       currentMillis = millis();
       rabk = 10000;
@@ -84,12 +80,12 @@ void newMsg(FB_msg& msg) {
     else{
        bot.sendMessage("Подключите горшок", CHAT_ID);
        String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-       bot.inlineMenu("Главная", menu1);
+       bot.editMenu(menuID, menu1);
     }
   }
   if (msg.data == "Water first plant") {
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-    bot.inlineMenu("Главная", menu1);
+    bot.editMenu(menuID, menu1);
     depth = 0;
     currentMillis = millis();
     rabk = 10000;
@@ -100,7 +96,7 @@ void newMsg(FB_msg& msg) {
   }
   if (msg.data == "Water second plant"){
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-    bot.inlineMenu("Главная", menu1);
+    bot.editMenu(menuID, menu1);
     depth = 0;
     currentMillis = millis();
     rabk = 10000;
@@ -111,7 +107,7 @@ void newMsg(FB_msg& msg) {
   }
   if (msg.data == "Water first and second plant"){
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-    bot.inlineMenu("Главная", menu1);
+    bot.editMenu(menuID, menu1);
     depth = 0;
     currentMillis = millis();
     rabk = 10000;

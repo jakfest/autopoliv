@@ -20,8 +20,8 @@ FastBot bot(BOT_TOKEN);
 unsigned long currentMillis = 0;
 unsigned long polive1 = 0, polive2 = 0;
 unsigned long otchet1 = 0, otchet2 = 0;
-unsigned long tmr1 = 1000000000000000, rab = 0, rabk2 = 1000000000000000;
-unsigned long tmr2 = 1000000000000000, rab = 0, rabk2 = 1000000000000000;
+unsigned long tmr1 = 1000000000000000, rab = 0, rabk1 = 1000000000000000;
+unsigned long tmr2 = 1000000000000000, rabk2 = 1000000000000000;
 boolean con = false;
 int menuID = 0;
 byte depth = 0;
@@ -289,6 +289,15 @@ void newMsg(FB_msg& msg) {
     String menu1 = F("Get or delete plant \t Power Modes \t Add Device \t Service Mode \t Offline Mode  \n Back");
     bot.editMenu(menuID, menu1);
     depth = 1;
+  }
+  if (msg.data == "Service Mode"){
+    dat = true;
+  }
+  if (msg.data == "Offline Mode"){
+    dat = true;
+  }
+  if (msg.data == "Add Device"){
+    dat = true;
   }
   if (msg.data == "Power Modes") {
     String menu1 = F("Economy mode \t Normal mode \n Back");

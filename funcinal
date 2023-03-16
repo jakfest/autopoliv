@@ -174,8 +174,9 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = millis();
-      otchet2 = millis();
+      currentMillis = millis();
+      otchet1 = currentMillis;
+      otchet2 = currentMillis;
       timergor1 = false;
       timergor2 = false;
       tmr1 = 10000;
@@ -185,7 +186,8 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = millis();
+      currentMillis = millis();
+      otchet1 = currentMillis;
       timergor1 = false;
       tmr1 = 10000;
     }
@@ -193,7 +195,8 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet2 = millis();
+      currentMillis = millis();
+      otchet2 = currentMillis;
       timergor2 = false;
       tmr2 = 10000;
     }
@@ -203,8 +206,9 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = millis();
-      otchet2 = millis();
+      currentMillis = millis();
+      otchet1 = currentMillis;
+      otchet2 = currentMillis;
       timergor1 = false;
       timergor2 = false;
       tmr1 = 120000;
@@ -214,7 +218,8 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = millis();
+      currentMillis = millis();
+      otchet1 = currentMillis;
       timergor1 = false;
       tmr1 = 120000;
     }
@@ -222,7 +227,8 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet2 = millis();
+      currentMillis = millis();
+      otchet2 = currentMillis;
       timergor2 = false;
       tmr2 = 10000;
     }
@@ -232,8 +238,9 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = millis();
-      otchet2 = millis();
+      currentMillis = millis();
+      otchet1 = currentMillis;
+      otchet2 = currentMillis;
       timergor1 = false;
       timergor2 = false;
       tmr1 = 28800000;
@@ -243,7 +250,8 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = millis();
+      currentMillis = millis();
+      otchet1 = currentMillis;
       tmr1 = 28800000;
       timergor1 = false;
     }
@@ -251,7 +259,8 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet2 = millis();
+      currentMillis = millis();
+      otchet2 = currentMillis;
       tmr2 = 28800000;
       timergor2 = false;
     }
@@ -261,8 +270,9 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = millis();
-      otchet2 = millis();
+      currentMillis = millis();
+      otchet1 = currentMillis;
+      otchet2 = currentMillis;
       tmr1 = 57600000;
       tmr2 = 57600000;
       timergor1 = false;
@@ -272,7 +282,8 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = millis();
+      currentMillis = millis();
+      otchet1 = currentMillis;
       tmr1 = 57600000;
       timergor1 = false;
     }
@@ -280,7 +291,8 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet2 = millis();
+      currentMillis = millis();
+      otchet2 = currentMillis;
       tmr2 = 57600000;
       timergor2 = false;
     }

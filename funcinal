@@ -29,6 +29,8 @@ boolean gor_1 = false;
 boolean gor_2 = false;
 boolean con1 = false;
 boolean con2 = false;
+boolean timergor1 = false;
+boolean timergor2 = false;
 
 
 
@@ -124,33 +126,147 @@ void newMsg(FB_msg& msg) {
     dat = true;
   }
   if (msg.data == "Get time") {
+    if (gor_1 == true && gor_2 == true) {
+      String menu1 = F("Time first plant \t Time second plant \t Time first and second plant \n Back");
+      bot.editMenu(menuID, menu1);
+      depth = 1;
+    }
+    else if (gor_1 == true) {
+      String menu1 = F("10 second \t 2 minutes \t 8 hour \t 16 hour  \n Back");
+      bot.editMenu(menuID, menu1);
+      depth = 1;
+      timergor1 = true;
+    }
+    else if (gor_2 == true) {
+      String menu1 = F("10 second \t 2 minutes \t 8 hour \t 16 hour  \n Back");
+      bot.editMenu(menuID, menu1);
+      depth = 1;
+      timergor2 = true;
+    }
+    else{
+      bot.sendMessage("Подключите горшок", CHAT_ID);
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+    }
+  }
+  if (msg.data == "Time first plant"){
     String menu1 = F("10 second \t 2 minutes \t 8 hour \t 16 hour  \n Back");
     bot.editMenu(menuID, menu1);
     depth = 1;
+    timergor1 = true;
+  }
+  if (msg.data == "Time second plant"){
+    String menu1 = F("10 second \t 2 minutes \t 8 hour \t 16 hour  \n Back");
+    bot.editMenu(menuID, menu1);
+    depth = 1;
+    timergor2 = true;
+  }
+  if (msg.data == "Time first and second plant"){
+    String menu1 = F("10 second \t 2 minutes \t 8 hour \t 16 hour  \n Back");
+    bot.editMenu(menuID, menu1);
+    depth = 1;
+    timergor1 = true;
+    timergor2 = true;
   }
   if (msg.data == "10 second") {
-    String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-    bot.editMenu(menuID, menu1);
-    tmr = 10000;
-    depth = 0;
+    if (timergor1 == true && timergor2 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet1 = 10000;
+      otchet2 = 10000;
+      timergor1 = false;
+      timergor2 = false;
+    }
+    else if (timergor1 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet1 = 10000;
+      timergor1 = false;
+    }
+    else if (timergor2 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet2 = 10000;
+      timergor2 = false;
+    }
   }
   if (msg.data == "2 minutes") {
-    String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-    bot.editMenu(menuID, menu1);
-    tmr = 60000;
-    depth = 0;
+    if (timergor1 == true && timergor2 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet1 = 120000;
+      otchet2 = 120000;
+      timergor1 = false;
+      timergor2 = false;
+    }
+    else if (timergor1 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet1 = 120000;
+      timergor1 = false;
+    }
+    else if (timergor2 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet2 = 120000;
+      timergor2 = false;
+    }
   }
   if (msg.data == "8 hour") {
-    String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-    bot.editMenu(menuID, menu1);
-    tmr = 1000000000000000000;
-    depth = 0;
+    if (timergor1 == true && timergor2 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet1 = 28800000;
+      otchet2 = 28800000;
+      timergor1 = false;
+      timergor2 = false;
+    }
+    else if (timergor1 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet1 = 28800000;
+      timergor1 = false;
+    }
+    else if (timergor2 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet2 = 28800000;
+      timergor2 = false;
+    }
   }
   if (msg.data == "16 hour") {
-    String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
-    bot.editMenu(menuID, menu1);
-    tmr = 1000000000000000000;
-    depth = 0;
+    if (timergor1 == true && timergor2 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet1 = 57600000;
+      otchet2 = 57600000;
+      timergor1 = false;
+      timergor2 = false;
+    }
+    else if (timergor1 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet1 = 57600000;
+      timergor1 = false;
+    }
+    else if (timergor2 == true) {
+      String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+      bot.editMenu(menuID, menu1);
+      depth = 0;
+      otchet2 = 57600000;
+      timergor2 = false;
+    }
   }
   if (msg.data == "Settings") {
     String menu1 = F("Get or delete plant \t Power Modes \t Add Device \t Service Mode \t Offline Mode  \n Back");

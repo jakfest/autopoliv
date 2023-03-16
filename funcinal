@@ -20,7 +20,8 @@ FastBot bot(BOT_TOKEN);
 unsigned long currentMillis = 0;
 unsigned long polive1 = 0, polive2 = 0;
 unsigned long otchet1 = 0, otchet2 = 0;
-unsigned long tmr = 1000000000000000, rab = 0, rabk = 1000000000;
+unsigned long tmr1 = 1000000000000000, rab = 0, rabk2 = 1000000000000000;
+unsigned long tmr2 = 1000000000000000, rab = 0, rabk2 = 1000000000000000;
 boolean con = false;
 int menuID = 0;
 byte depth = 0;
@@ -50,7 +51,6 @@ void newMsg(FB_msg& msg) {
     bot.inlineMenu("Главное", menu1);
     depth = 0;
     menuID = bot.lastBotMsg();
-    bot.sendMessage("За работу", CHAT_ID); bot.sendMessage("За работу", CHAT_ID);
   }
   if (msg.data == "Water") {
     if (gor_1 == true && gor_2 == true) {
@@ -63,7 +63,7 @@ void newMsg(FB_msg& msg) {
       bot.editMenu(menuID, menu1);
       depth = 0;
       currentMillis = millis();
-      rabk = 10000;
+      rabk1 = 10000;
       polive1 = currentMillis;
       digitalWrite(GOR1, 1);
       bot.sendMessage("За работу", CHAT_ID);
@@ -74,7 +74,7 @@ void newMsg(FB_msg& msg) {
       bot.editMenu(menuID, menu1);
       depth = 0;
       currentMillis = millis();
-      rabk = 10000;
+      rabk2 = 10000;
       polive2 = currentMillis;
       digitalWrite(GOR2, 1);
       bot.sendMessage("За работу", CHAT_ID);
@@ -91,7 +91,7 @@ void newMsg(FB_msg& msg) {
     bot.editMenu(menuID, menu1);
     depth = 0;
     currentMillis = millis();
-    rabk = 10000;
+    rabk1 = 10000;
     polive1 = currentMillis;
     digitalWrite(GOR1, 1);
     bot.sendMessage("За работу", CHAT_ID);
@@ -102,7 +102,7 @@ void newMsg(FB_msg& msg) {
     bot.editMenu(menuID, menu1);
     depth = 0;
     currentMillis = millis();
-    rabk = 10000;
+    rabk2 = 10000;
     polive2 = currentMillis;
     digitalWrite(GOR2, 1);
     bot.sendMessage("За работу", CHAT_ID);
@@ -113,7 +113,8 @@ void newMsg(FB_msg& msg) {
     bot.editMenu(menuID, menu1);
     depth = 0;
     currentMillis = millis();
-    rabk = 10000;
+    rabk1 = 10000;
+    rabk2 = 10000;
     polive1 = currentMillis;
     digitalWrite(GOR1, 1);
     con1 = true;
@@ -173,24 +174,28 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = 10000;
-      otchet2 = 10000;
+      otchet1 = millis();
+      otchet2 = millis();
       timergor1 = false;
       timergor2 = false;
+      tmr1 = 10000;
+      tmr2 = 10000;
     }
     else if (timergor1 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = 10000;
+      otchet1 = millis();
       timergor1 = false;
+      tmr1 = 10000;
     }
     else if (timergor2 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet2 = 10000;
+      otchet2 = millis();
       timergor2 = false;
+      tmr2 = 10000;
     }
   }
   if (msg.data == "2 minutes") {
@@ -198,24 +203,28 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = 120000;
-      otchet2 = 120000;
+      otchet1 = millis();
+      otchet2 = millis();
       timergor1 = false;
       timergor2 = false;
+      tmr1 = 120000;
+      tmr2 = 120000;
     }
     else if (timergor1 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = 120000;
+      otchet1 = millis();
       timergor1 = false;
+      tmr1 = 120000;
     }
     else if (timergor2 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet2 = 120000;
+      otchet2 = millis();
       timergor2 = false;
+      tmr2 = 10000;
     }
   }
   if (msg.data == "8 hour") {
@@ -223,23 +232,27 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = 28800000;
-      otchet2 = 28800000;
+      otchet1 = millis();
+      otchet2 = millis();
       timergor1 = false;
       timergor2 = false;
+      tmr1 = 28800000;
+      tmr2 = 28800000;
     }
     else if (timergor1 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = 28800000;
+      otchet1 = millis();
+      tmr1 = 28800000;
       timergor1 = false;
     }
     else if (timergor2 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet2 = 28800000;
+      otchet2 = millis();
+      tmr2 = 28800000;
       timergor2 = false;
     }
   }
@@ -248,8 +261,10 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = 57600000;
-      otchet2 = 57600000;
+      otchet1 = millis();
+      otchet2 = millis();
+      tmr1 = 57600000;
+      tmr2 = 57600000;
       timergor1 = false;
       timergor2 = false;
     }
@@ -257,14 +272,16 @@ void newMsg(FB_msg& msg) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet1 = 57600000;
+      otchet1 = millis();
+      tmr1 = 57600000;
       timergor1 = false;
     }
     else if (timergor2 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
       bot.editMenu(menuID, menu1);
       depth = 0;
-      otchet2 = 57600000;
+      otchet2 = millis();
+      tmr2 = 57600000;
       timergor2 = false;
     }
   }
@@ -272,6 +289,16 @@ void newMsg(FB_msg& msg) {
     String menu1 = F("Get or delete plant \t Power Modes \t Add Device \t Service Mode \t Offline Mode  \n Back");
     bot.editMenu(menuID, menu1);
     depth = 1;
+  }
+  if (msg.data == "Power Modes") {
+    String menu1 = F("Economy mode \t Normal mode \n Back");
+    bot.editMenu(menuID, menu1);
+    depth = 1;
+  }
+  if (msg.data == "Economy mode" || msg.data == "Normal mode"){
+    String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
+    bot.editMenu(menuID, menu1);
+    depth = 0;
   }
   if (msg.data == "Get or delete plant") {
     if (gor_1 == false && gor_2 == false) {
@@ -343,21 +370,23 @@ void newMsg(FB_msg& msg) {
 void loop() {
   bot.tick();
   currentMillis = millis();
-  if (currentMillis - otchet1 >= tmr && con1 == false) {
-    rabk = 15000;
+  if (currentMillis - otchet1 >= tmr1 && con1 == false) {
+    rabk1 = 15000;
     polive1 = currentMillis;
     digitalWrite(GOR1, 1);
   }
-  if (currentMillis - otchet2 >= tmr && con2 == false) {
-    rabk = 15000;
+  if (currentMillis - otchet2 >= tmr2 && con2 == false) {
+    rabk2 = 15000;
     polive2 = currentMillis;
     digitalWrite(GOR2, 1);
   }
-  if (currentMillis - polive1 >= rabk && con1 == true) {
+  if (currentMillis - polive1 >= rabk1 && con1 == true) {
+    otchet1 = currentMillis;
     otchet1 = currentMillis;
     digitalWrite(GOR1, 0);
   }
-  if (currentMillis - polive2 >= rabk && con2 == true) {
+  if (currentMillis - polive2 >= rabk2 && con2 == true) {
+    otchet2 = currentMillis;
     otchet2 = currentMillis;
     digitalWrite(GOR2, 0);
   }

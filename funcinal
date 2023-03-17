@@ -18,8 +18,8 @@ FastBot bot(BOT_TOKEN);
 
 
 unsigned long currentMillis = 0;
-unsigned long polive1 = 0, polive2 = 0;
-unsigned long otchet1 = 0, otchet2 = 0;
+unsigned long polive1 = 1000000000, polive2 = 1000000000;
+unsigned long otchet1 = 1000000000, otchet2 = 1000000000;
 unsigned long tmr1 = 1000000000000000, rab = 0, rabk1 = 1000000000000000;
 unsigned long tmr2 = 1000000000000000, rabk2 = 1000000000000000;
 boolean con = false;
@@ -30,6 +30,7 @@ boolean gor_1 = false;
 boolean gor_2 = false;
 boolean timergor1 = false;
 boolean timergor2 = false;
+boolean con1 = false, con2 = false;
 
 
 void setup() {
@@ -64,6 +65,7 @@ void newMsg(FB_msg& msg) {
       polive1 = currentMillis;
       digitalWrite(GOR1, 1);
       bot.sendMessage("За работу", CHAT_ID);
+      con1 = true;
     }
     else if (gor_2 == true) {
       String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
@@ -74,6 +76,7 @@ void newMsg(FB_msg& msg) {
       polive2 = currentMillis;
       digitalWrite(GOR2, 1);
       bot.sendMessage("За работу", CHAT_ID);
+      con2 = true;
     }
     else{
        bot.sendMessage("Подключите горшок", CHAT_ID);
@@ -90,6 +93,7 @@ void newMsg(FB_msg& msg) {
     polive1 = currentMillis;
     digitalWrite(GOR1, 1);
     bot.sendMessage("За работу", CHAT_ID);
+    con1 = true;
   }
   if (msg.data == "Water 2 plant"){
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
@@ -100,6 +104,7 @@ void newMsg(FB_msg& msg) {
     polive2 = currentMillis;
     digitalWrite(GOR2, 1);
     bot.sendMessage("За работу", CHAT_ID);
+    con2 = true;
   }
   if (msg.data == "Water 1,2 plant"){
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
@@ -113,6 +118,8 @@ void newMsg(FB_msg& msg) {
     polive2 = currentMillis;
     digitalWrite(GOR2, 1);
     bot.sendMessage("За работу", CHAT_ID);
+    con1 = true;
+    con2 = true;
   }
   if (msg.data == "Datchic ON/OFF") {
     String menu1 = F("ON \t OFF \n Back");
@@ -296,7 +303,7 @@ void newMsg(FB_msg& msg) {
     }
   }
   if (msg.data == "Settings") {
-    String menu1 = F("Get,delete plant \t Power Modes \n Add Device \n Back");
+    String menu1 = F("Get,delete plant \t Power Modes \n Add Device \t Status \n Back");
     bot.editMenu(menuID, menu1);
     depth = 1;
   }
@@ -305,6 +312,30 @@ void newMsg(FB_msg& msg) {
     bot.editMenu(menuID, menu1);
     depth = 1;
     bot.sendMessage("Напишите ID", CHAT_ID);
+  }
+  if (msg.data == "Status"){
+    String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.editMenu(menuID, menu1);
+    depth = 0;
+    if (gor_1 == true){
+      if (con1 == true){
+        bot.sendMessage("Работаю, отстань(первый цветок)", CHAT_ID);
+      }
+      else{
+        bot.sendMessage("Отдыхаю, отстань(первый цветок)", CHAT_ID);
+      }
+    }
+    else if(gor_2 == true){
+      if (con2 == true){
+        bot.sendMessage("Работаю, отстань(второй цветок)", CHAT_ID);
+      }
+      else{
+        bot.sendMessage("Отдыхаю, отстань(второй цветок)", CHAT_ID);
+      }
+    }
+    else{
+      bot.sendMessage("Подключи цветок", CHAT_ID);
+    }
   }
   if (msg.data == "Continue"){
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
@@ -391,25 +422,29 @@ void newMsg(FB_msg& msg) {
 void loop() {
   bot.tick();
   currentMillis = millis();
-  if (currentMillis - otchet1 >= tmr1) {
+  if (currentMillis - otchet1 >= tmr1 && con1 == false) {
     rabk1 = 15000;
     polive1 = currentMillis;
     digitalWrite(GOR1, 1);
+    con1 = true;
   }
-  if (currentMillis - otchet2 >= tmr2) {
+  if (currentMillis - otchet2 >= tmr2 && con2 == false) {
     rabk2 = 15000;
     polive2 = currentMillis;
     digitalWrite(GOR2, 1);
+    con2 = true;
   }
-  if (currentMillis - polive1 >= rabk1) {
+  if (currentMillis - polive1 >= rabk1 && con1 == true) {
     otchet1 = currentMillis;
     otchet1 = currentMillis;
     digitalWrite(GOR1, 0);
+    con1 == false;
   }
-  if (currentMillis - polive2 >= rabk2) {
+  if (currentMillis - polive2 >= rabk2 && con2 == true) {
     otchet2 = currentMillis;
     otchet2 = currentMillis;
     digitalWrite(GOR2, 0);
+    con2 == false;
   }
 }
 void start() {

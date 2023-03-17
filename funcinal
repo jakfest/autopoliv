@@ -28,8 +28,6 @@ byte depth = 0;
 boolean dat = true;
 boolean gor_1 = false;
 boolean gor_2 = false;
-boolean con1 = false;
-boolean con2 = false;
 boolean timergor1 = false;
 boolean timergor2 = false;
 
@@ -67,7 +65,6 @@ void newMsg(FB_msg& msg) {
       polive1 = currentMillis;
       digitalWrite(GOR1, 1);
       bot.sendMessage("За работу", CHAT_ID);
-      con1 = true;
     }
     else if (gor_2 == true) {
       String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
@@ -78,7 +75,6 @@ void newMsg(FB_msg& msg) {
       polive2 = currentMillis;
       digitalWrite(GOR2, 1);
       bot.sendMessage("За работу", CHAT_ID);
-      con2 = true;
     }
     else{
        bot.sendMessage("Подключите горшок", CHAT_ID);
@@ -95,7 +91,6 @@ void newMsg(FB_msg& msg) {
     polive1 = currentMillis;
     digitalWrite(GOR1, 1);
     bot.sendMessage("За работу", CHAT_ID);
-    con1 = true;
   }
   if (msg.data == "Water second plant"){
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
@@ -106,7 +101,6 @@ void newMsg(FB_msg& msg) {
     polive2 = currentMillis;
     digitalWrite(GOR2, 1);
     bot.sendMessage("За работу", CHAT_ID);
-    con2 = true;
   }
   if (msg.data == "Water first and second plant"){
     String menu1 = F("Water \t Get time \t Water for datchic \n Settings");
@@ -117,11 +111,9 @@ void newMsg(FB_msg& msg) {
     rabk2 = 10000;
     polive1 = currentMillis;
     digitalWrite(GOR1, 1);
-    con1 = true;
     polive2 = currentMillis;
     digitalWrite(GOR2, 1);
     bot.sendMessage("За работу", CHAT_ID);
-    con2 = true;
   }
   if (msg.data == "Water for datchic") {
     dat = true;
@@ -391,22 +383,22 @@ void newMsg(FB_msg& msg) {
 void loop() {
   bot.tick();
   currentMillis = millis();
-  if (currentMillis - otchet1 >= tmr1 && con1 == false) {
+  if (currentMillis - otchet1 >= tmr1) {
     rabk1 = 15000;
     polive1 = currentMillis;
     digitalWrite(GOR1, 1);
   }
-  if (currentMillis - otchet2 >= tmr2 && con2 == false) {
+  if (currentMillis - otchet2 >= tmr2) {
     rabk2 = 15000;
     polive2 = currentMillis;
     digitalWrite(GOR2, 1);
   }
-  if (currentMillis - polive1 >= rabk1 && con1 == true) {
+  if (currentMillis - polive1 >= rabk1) {
     otchet1 = currentMillis;
     otchet1 = currentMillis;
     digitalWrite(GOR1, 0);
   }
-  if (currentMillis - polive2 >= rabk2 && con2 == true) {
+  if (currentMillis - polive2 >= rabk2) {
     otchet2 = currentMillis;
     otchet2 = currentMillis;
     digitalWrite(GOR2, 0);

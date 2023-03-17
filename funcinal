@@ -114,7 +114,7 @@ void newMsg(FB_msg& msg) {
     digitalWrite(GOR2, 1);
     bot.sendMessage("За работу", CHAT_ID);
   }
-  if (msg.data == "") {
+  if (msg.data == "Datchic ON/OFF") {
     String menu1 = F("ON \t OFF \n Back");
     bot.editMenu(menuID, menu1);
     depth = 1;

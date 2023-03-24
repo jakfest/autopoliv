@@ -1,5 +1,5 @@
-#define WIFI_SSID "TP--Link"
-#define WIFI_PASS "89508240145"
+#define WIFI_SSID "SSID"
+#define WIFI_PASS "Password"
 #define GOR1 2
 #define GOR2 1
 #define BOT_TOKEN "5710052332:AAFSjCW2vZW-nWMcd0GljNuNl3EHzd49_lc"

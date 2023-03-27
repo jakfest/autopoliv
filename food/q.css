@@ -1,1 +1,30 @@
+.search{
+    box-sizing: border-box;
+    margin-top: 6vw;
+    position: absolute;
+    width: 74vw;
+    height: 5vw;
+    margin-left: 24%;
+    background: #D9D9D9;
+    
+    border-radius: 60px;
+}
+.name{
+    position: absolute;
+width: 62vw;
+height: 5vw;
+margin-left: 24%;
+margin-top: 0,7%;
+background: #DD9B79;
+border-radius: 60px;
+}
+.hz{
+    margin-top: 12vw;
+    position: absolute;
+    width: 74vw;
+height: 35vw;
+margin-left: 24vw;
+background: #D9D9D9;
+border-radius: 50px;
+}
 

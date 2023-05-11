@@ -1,0 +1,50 @@
+.CardWrapper {
+ 
+  flex: 0 1 300px;
+  box-sizing: border-box;
+  
+  margin: 7vh;
+  overflow: hidden;
+  padding: 2vh;
+  flex-wrap: wrap;
+  
+  border-radius: 5px;
+  display: flex;
+  background: #E3C4A7;
+  min-width: 300px;
+  
+}
+
+.Header {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.ColImg {
+  width: 30%;
+  margin-right: 50%;
+}
+
+.ColDetail {
+  width: 70%;
+  
+}
+
+.Img {
+  height: 100px;
+}
+
+.BookTitle {
+  font-size: 20px;
+}
+
+.Description {
+  color: #757575;
+  font-size: 14px;
+  margin-bottom:10px;
+}
+
+.Link {
+  font-size: 14px;
+}

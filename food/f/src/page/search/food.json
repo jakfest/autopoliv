@@ -1,0 +1,59 @@
+[
+    {
+      "title": "ЭЧПОЧМАК",
+      "image": "https://static.1000.menu/img/content/21434/-echpochmak-echpochmak-na-kefire_1500855115_1_max.jpg",
+      "author": "Татарская кухня",
+      "url": "https://1000.menu/cooking/1603-echpochmak"
+    },
+   
+    {
+      "title": "БЕЛЯШ",
+      "image": "https://static.1000.menu/res/640/img/content-v2/4b/84/41176/belyashi-na-skovorode-s-myasom_1601558639_17_max.jpg",
+      "author": "Татарская кухня",
+      "url": "https://1000.menu/cooking/41176-belyashi-na-skovorode-s-myasom"
+    },
+    {
+      "title": "ЭЛЕШ",
+      "image": "https://static.1000.menu/res/640/img/content/12060/elesh-s-kuricei_1412920163_0_max.JPG",
+      "author": "Татарская кухня",
+      "url": "https://1000.menu/cooking/12060-elesh-s-kuricei"
+    },
+   
+    {
+      "title": "ПЕЛЬМЕНИ",
+      "image": "https://static.1000.menu/res/640/img/content-v2/7a/2a/22711/zamorojennye-jarenye-pelmeni_1572241068_8_max.jpg",
+      "author": "Удмуртская кухня",
+      "url": "https://1000.menu/cooking/22711-zamorojennye-pelmeni-na-skovorode-jarenye"
+    },
+    {
+      "title": "ТАБАНИ",
+      "image": "https://static.1000.menu/res/640/img/content/12599/udmurtskie-tabani_1425226327_0_max.jpg",
+      "author": "Удмуртская кухня",
+      "url": "https://1000.menu/cooking/12599-udmurtskie-tabani"
+    },
+    {
+      "title": "ПЕРЕПЕЧИ",
+      "image": "https://static.1000.menu/res/640/img/content/22478/perepechi-s-yaicom_1506500053_1_max.jpg",
+      "author": "Удмуртская кухня",
+      "url": "https://1000.menu/cooking/22478-perepechi-s-yaicom"
+    },
+    {
+      "title": "БЛИНЫ",
+      "image": "https://static.1000.menu/res/640/img/content-v2/ee/62/7120/bliny-obychnye_1613393050_8_max.jpg",
+      "author": "Русская кухня",
+      "url": "https://1000.menu/cooking/7120-bliny-obychnye"
+    },
+    {
+      "title": "СЫРНИКИ",
+      "image": "https://static.1000.menu/res/640/img/content/37331/pyshnye-syrniki-iz-tvoroga-na-skovorode_1564568522_9_max.jpg",
+      "author": "Русская кухня",
+      "url": "https://1000.menu/cooking/37331-pyshnye-syrniki-iz-tvoroga-na-skovorode"
+    },
+    {
+      "title": "КАША ПШЕННАЯ",
+      "image": "https://static.1000.menu/res/640/img/content-v2/dd/5d/29354/kasha-pshennaya-v-kastrule-na-moloke_1672818416_16_max.jpg",
+      "author": "Русская кухня",
+      "url": "https://1000.menu/cooking/29354-pshennaya-kasha-v-kastrule-na-moloke"
+    }
+    
+  ]

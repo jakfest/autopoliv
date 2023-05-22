@@ -78,10 +78,10 @@ void newMsg(FB_msg& msg) {
       bot.sendMessage("За работу", CHAT_ID);
       con2 = true;
     }
-    else{
-       bot.sendMessage("Подключите горшок", CHAT_ID);
-       String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
-       bot.editMenu(menuID, menu1);
+    else {
+      bot.sendMessage("Подключите горшок", CHAT_ID);
+      String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+      bot.editMenu(menuID, menu1);
     }
   }
   if (msg.data == "Water 1 plant") {
@@ -95,7 +95,7 @@ void newMsg(FB_msg& msg) {
     bot.sendMessage("За работу", CHAT_ID);
     con1 = true;
   }
-  if (msg.data == "Water 2 plant"){
+  if (msg.data == "Water 2 plant") {
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
     bot.editMenu(menuID, menu1);
     depth = 0;
@@ -106,7 +106,7 @@ void newMsg(FB_msg& msg) {
     bot.sendMessage("За работу", CHAT_ID);
     con2 = true;
   }
-  if (msg.data == "Water 1,2 plant"){
+  if (msg.data == "Water 1,2 plant") {
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
     bot.editMenu(menuID, menu1);
     depth = 0;
@@ -126,8 +126,15 @@ void newMsg(FB_msg& msg) {
     bot.editMenu(menuID, menu1);
     depth = 1;
   }
-  if (msg.data == "ON" || msg.data == "OFF"){
+  if (msg.data == "ON") {
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.sendMessage("Датчик включен", CHAT_ID);
+    bot.editMenu(menuID, menu1);
+    depth = 0;
+  }
+  if (msg.data == "OFF") {
+    String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.sendMessage("Датчик выключен", CHAT_ID);
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
@@ -149,26 +156,29 @@ void newMsg(FB_msg& msg) {
       depth = 1;
       timergor2 = true;
     }
-    else{
+    else {
       bot.sendMessage("Подключите горшок", CHAT_ID);
       String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
       bot.editMenu(menuID, menu1);
     }
   }
-  if (msg.data == "Time 1 plant"){
+  if (msg.data == "Time 1 plant") {
     String menu1 = F("10 second \t 2 minutes \n 8 hour \t 16 hour  \n Back");
+    bot.sendMessage("Первый цветок подключен", CHAT_ID);
     bot.editMenu(menuID, menu1);
     depth = 1;
     timergor1 = true;
   }
-  if (msg.data == "Time 2 plant"){
+  if (msg.data == "Time 2 plant") {
     String menu1 = F("10 second \t 2 minutes \n 8 hour \t 16 hour  \n Back");
+    bot.sendMessage("Второй цветок подключен", CHAT_ID);
     bot.editMenu(menuID, menu1);
     depth = 1;
     timergor2 = true;
   }
-  if (msg.data == "Time 1,2 plant"){
+  if (msg.data == "Time 1,2 plant") {
     String menu1 = F("10 second \t 2 minutes \n 8 hour \t 16 hour  \n Back");
+    bot.sendMessage("Оба цветка подключены", CHAT_ID);
     bot.editMenu(menuID, menu1);
     depth = 1;
     timergor1 = true;
@@ -307,37 +317,37 @@ void newMsg(FB_msg& msg) {
     bot.editMenu(menuID, menu1);
     depth = 1;
   }
-  if (msg.data == "Add Device"){
+  if (msg.data == "Add Device") {
     String menu1 = F("Continue \t Back");
     bot.editMenu(menuID, menu1);
     depth = 1;
     bot.sendMessage("Напишите ID", CHAT_ID);
   }
-  if (msg.data == "Status"){
+  if (msg.data == "Status") {
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
     bot.editMenu(menuID, menu1);
     depth = 0;
-    if (gor_1 == true){
-      if (con1 == true){
+    if (gor_1 == true) {
+      if (con1 == true) {
         bot.sendMessage("Работаю, отстань(первый цветок)", CHAT_ID);
       }
-      else{
+      else {
         bot.sendMessage("Отдыхаю, отстань(первый цветок)", CHAT_ID);
       }
     }
-    else if(gor_2 == true){
-      if (con2 == true){
+    if (gor_2 == true) {
+      if (con2 == true) {
         bot.sendMessage("Работаю, отстань(второй цветок)", CHAT_ID);
       }
-      else{
+      else {
         bot.sendMessage("Отдыхаю, отстань(второй цветок)", CHAT_ID);
       }
     }
-    else{
+    if (gor_1 == false && gor_2 == false) {
       bot.sendMessage("Подключи цветок", CHAT_ID);
     }
   }
-  if (msg.data == "Continue"){
+  if (msg.data == "Continue") {
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
     bot.editMenu(menuID, menu1);
     depth = 0;
@@ -347,8 +357,9 @@ void newMsg(FB_msg& msg) {
     bot.editMenu(menuID, menu1);
     depth = 1;
   }
-  if (msg.data == "Economy mode" || msg.data == "Normal mode"){
+  if (msg.data == "Economy mode" || msg.data == "Normal mode") {
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.sendMessage("Режим работы изменен", CHAT_ID);
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
@@ -377,24 +388,28 @@ void newMsg(FB_msg& msg) {
   if (msg.data == "Get 1 plant") {
     gor_1 = true;
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.sendMessage("Цветок подключен", CHAT_ID);
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
   if (msg.data == "Get 2 plant") {
     gor_2 = true;
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.sendMessage("Цветок подключен", CHAT_ID);
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
   if (msg.data == "Delete 1 plant") {
     gor_1 = false;
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.sendMessage("Цветок отключены", CHAT_ID); 
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
   if (msg.data == "Delete 2 plant") {
     gor_2 = false;
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.sendMessage("Цветок отключены", CHAT_ID); 
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
@@ -402,6 +417,7 @@ void newMsg(FB_msg& msg) {
     gor_1 = false;
     gor_2 = false;
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.sendMessage("Цветы отключены", CHAT_ID);
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
@@ -409,6 +425,7 @@ void newMsg(FB_msg& msg) {
     gor_2 = true;
     gor_1 = true;
     String menu1 = F("Water \t Get time \t Datchic ON/OFF \n Settings");
+    bot.sendMessage("Цветы подключены", CHAT_ID);
     bot.editMenu(menuID, menu1);
     depth = 0;
   }
